@@ -20,13 +20,13 @@ client.on('ready', () => {
 
 // Message listener
 client.on('message', message => {
-  if(message.content.startsWith('~dead')) {
+  if(message.content.startsWith('~hello')) {
     console.log('MESSAGE RECEIVED');
     message.channel.send('yo!');
   }
   // Music file (i.e. XO TOUR Llif3 by Lil Uzi Vert) will play
-  // when '~play' message is played in text chat
-  if(message.content.startsWith('~play')) {
+  // when '~dead' message is played in text chat
+  if(message.content.startsWith('~dead')) {
     const channel = message.member.voiceChannel;
     channel.join().then(conn => {
       console.log("JOINED VOICE CHANNEL");
@@ -36,5 +36,15 @@ client.on('message', message => {
       isPlaying = true;
     })
     .catch(console.log);
+  }
+    // Play Pearl Jam's "Alive" if '~alive'
+    if(message.content.startsWith('~alive')) {
+      const channel = message.member.voiceChannel;
+      channel.join().then(conn => {
+        console.log("JOINED VOICE CHANNEL");
+        const dispatcher = conn.playFile('./ALIVE.mp3', vol - 0.4, 2);
+        isPlaying = true;
+      })
+      .catch(console.log);
   }
 });
