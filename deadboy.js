@@ -25,10 +25,7 @@ client.on('message', message => {
     console.log('MESSAGE RECEIVED');
     message.channel.send('yo!');
   }
-  // Music file (i.e. XO TOUR Llif3 by Lil Uzi Vert) will play
-  // when '~dead' message is played in text chat
-
-
+  
   if(message.content in songs) {
     const channel = message.member.voiceChannel;
     channel.join().then(conn => {
